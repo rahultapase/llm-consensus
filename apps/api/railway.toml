@@ -1,0 +1,16 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+watchPatterns = [
+  "backend/**",
+  "tests/**",
+  "pyproject.toml",
+  "uv.lock",
+  "Dockerfile",
+  ".python-version",
+  "railway.toml",
+]
+
+[deploy]
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100

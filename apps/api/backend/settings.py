@@ -24,6 +24,7 @@ class Settings(BaseSettings):
 
     # App
     app_version: str = Field(default="0.2.0", description="API version")
+    port: int = Field(default=8001, description="Port to bind the API server to")
 
     model_config = {
         "env_file": ".env",
