@@ -66,8 +66,8 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
     : DEFAULT_SUGGESTIONS;
 
   return (
-    <div className="flex flex-1 flex-col pt-16 sm:justify-center sm:pt-0">
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 px-4 sm:gap-6">
+    <div className="flex flex-1 flex-col pt-28 sm:justify-center sm:pt-0">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 sm:gap-6">
         {/* Heading */}
         {isTemporary ? (
           <div>
@@ -144,7 +144,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
             <button
               key={suggestion}
               onClick={() => onSuggestionClick(suggestion)}
-              className="flex w-full items-center justify-between px-4 py-2.5 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-ring sm:py-3.5"
+              className="flex w-full items-center justify-between px-4 py-3 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-ring sm:py-3.5"
               style={{
                 color: "var(--color-text-primary)",
                 background: "transparent",
