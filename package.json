@@ -1,0 +1,23 @@
+{
+  "name": "llm-consensus",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "overrides": {
+    "dompurify": "^3.4.1",
+    "lodash-es": "^4.18.1",
+    "postcss": "^8.5.12"
+  },
+  "scripts": {
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "cd apps/api && uv run python -m backend.main",
+    "build:web": "npm run build --workspace=apps/web",
+    "lint:api": "cd apps/api && uv run ruff check backend tests",
+    "test:api": "cd apps/api && uv run pytest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

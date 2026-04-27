@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Font stack: ProximaVara is a locally-installed variable font.
+ * No external CDN or Google Fonts import — zero tracking overhead.
+ * If ProximaVara is not available, the stack falls through gracefully
+ * to ui-sans-serif → system-ui → platform defaults.
+ */
+@theme {
+  --font-sans: ProximaVara, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-display: ProximaVara, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
+  /* shadcn/ui design tokens — light mode (ChatGPT-faithful palette) */
+  --color-background: #ffffff;
+  --color-foreground: #0d0d0d;
+  --color-card: #ffffff;
+  --color-card-foreground: #0d0d0d;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0d0d0d;
+  --color-primary: #0d0d0d;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f9f9f9;
+  --color-secondary-foreground: #0d0d0d;
+  --color-muted: #f9f9f9;
+  --color-muted-foreground: #6b6b6b;
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.577 0.245 27.325);
+  --color-border: #e5e5e5;
+  --color-input: #d9d9d9;
+  --color-ring: #6b6b6b;
+  --color-chart-1: oklch(0.646 0.222 41.116);
+  --color-chart-2: oklch(0.6 0.118 184.704);
+  --color-chart-3: oklch(0.398 0.07 227.392);
+  --color-chart-4: oklch(0.828 0.189 84.429);
+  --color-chart-5: oklch(0.769 0.188 70.08);
+  --color-sidebar: #f9f9f9;
+  --color-sidebar-foreground: #0d0d0d;
+  --color-sidebar-primary: #0d0d0d;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #ececec;
+  --color-sidebar-accent-foreground: #0d0d0d;
+  --color-sidebar-border: #e5e5e5;
+  --color-sidebar-ring: #6b6b6b;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Dark mode — shadcn token overrides (ChatGPT-faithful dark palette) */
+.dark {
+  --color-background: #212121;
+  --color-foreground: #ececec;
+  --color-card: #212121;
+  --color-card-foreground: #ececec;
+  --color-popover: #212121;
+  --color-popover-foreground: #ececec;
+  --color-primary: #ececec;
+  --color-primary-foreground: #0d0d0d;
+  --color-secondary: #2a2a2a;
+  --color-secondary-foreground: #ececec;
+  --color-muted: #2a2a2a;
+  --color-muted-foreground: #8e8ea0;
+  --color-destructive: oklch(0.396 0.141 25.723);
+  --color-destructive-foreground: oklch(0.637 0.237 25.331);
+  --color-border: #333333;
+  --color-input: #444444;
+  --color-ring: #8e8ea0;
+  --color-chart-1: oklch(0.488 0.243 264.376);
+  --color-chart-2: oklch(0.696 0.17 162.48);
+  --color-chart-3: oklch(0.769 0.188 70.08);
+  --color-chart-4: oklch(0.627 0.265 303.9);
+  --color-chart-5: oklch(0.645 0.246 16.439);
+  --color-sidebar: #171717;
+  --color-sidebar-foreground: #ececec;
+  --color-sidebar-primary: #ececec;
+  --color-sidebar-primary-foreground: #0d0d0d;
+  --color-sidebar-accent: #2a2a2a;
+  --color-sidebar-accent-foreground: #ececec;
+  --color-sidebar-border: #333333;
+  --color-sidebar-ring: #8e8ea0;
+}
+
+/*
+ * App-wide theme custom properties (ChatGPT-faithful).
+ * These runtime CSS variables switch via the [data-theme] attribute.
+ * Defined OUTSIDE @theme — they are NOT Tailwind design tokens.
+ * All layout components consume these. Never hardcode hex in component files.
+ */
+:root {
+  --color-bg:              #ffffff;
+  --color-sidebar-bg:      #f9f9f9;
+  --color-sidebar-hover:   #e4e4e4;
+  --color-border:          #e5e5e5;
+  --color-text-primary:    #0d0d0d;
+  --color-text-secondary:  #6b6b6b;
+  --color-input-bg:        #ffffff;
+  --color-input-border:    #d9d9d9;
+  --color-btn-primary-bg:  #0d0d0d;
+  --color-btn-primary-fg:  #ffffff;
+  --color-user-msg-bg:     #e8e9e9;
+  --color-user-msg-fg:     #1e293b;
+  --color-tab-indicator:   #18181b;
+  --color-accent:          #10a37f;
+  --color-accent-hover:    #0d8a6c;
+  --color-auth-btn-bg:     #6366f1;
+  --color-auth-btn-hover:  #4f46e5;
+  /* scrollbar */
+  --color-scrollbar-thumb:       rgba(0, 0, 0, 0.20);
+  --color-scrollbar-thumb-hover: rgba(0, 0, 0, 0.38);
+}
+
+[data-theme="dark"] {
+  --color-bg:              #212121;
+  --color-sidebar-bg:      #171717;
+  --color-sidebar-hover:   #2a2a2a;
+  --color-border:          #333333;
+  --color-text-primary:    #ececec;
+  --color-text-secondary:  #8e8ea0;
+  --color-input-bg:        #2f2f2f;
+  --color-input-border:    #444444;
+  --color-btn-primary-bg:  #ececec;
+  --color-btn-primary-fg:  #0d0d0d;
+  --color-user-msg-bg:     #2f3030;
+  --color-user-msg-fg:     #f1f5f9;
+  --color-tab-indicator:   #d4d4d8;
+  --color-accent:          #10a37f;
+  --color-accent-hover:    #0d8a6c;
+  --color-auth-btn-bg:     #818cf8;
+  --color-auth-btn-hover:  #6366f1;
+  /* scrollbar */
+  --color-scrollbar-thumb:       rgba(255, 255, 255, 0.18);
+  --color-scrollbar-thumb-hover: rgba(255, 255, 255, 0.34);
+}
+
+/* Council node pulse animation — used in auth left panel */
+@keyframes council-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.95); }
+  50%      { opacity: 1;   transform: scale(1.05); }
+}
+
+/* Auth left-panel floating orb — very slow, gentle Y drift */
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* Auth pipeline connector — traveling highlight flows downward */
+@keyframes flow-down {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+/* Stage shimmer loading skeleton */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* Stage block entrance — fade-in + slide-up */
+@keyframes stage-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pipeline connector line fill */
+@keyframes pipeline-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.shimmer-line {
+  background: linear-gradient(
+    90deg,
+    var(--shimmer-base) 0px,
+    var(--shimmer-highlight) 40%,
+    var(--shimmer-base) 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+:root {
+  --shimmer-base:      rgba(0, 0, 0, 0.06);
+  --shimmer-highlight: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
+  --shimmer-base:      rgba(255, 255, 255, 0.04);
+  --shimmer-highlight: rgba(255, 255, 255, 0.10);
+}
+
+.stage-enter {
+  animation: stage-enter 0.3s ease-out both;
+}
+
+.auth-fade-in {
+  animation: stage-enter 0.45s ease-out both;
+}
+
+/* ── Logo theme toggling ──────────────────────────────────────────────────── */
+/* light mode: show brain_black, hide brain_white */
+.logo-light { display: block; }
+.logo-dark  { display: none; }
+/* dark mode: hide brain_black, show brain_white */
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark  { display: block; }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    @apply antialiased;
+  }
+}
+
+/* ── Scrollbar utilities (Claude-style) ─────────────────────────────────── */
+
+/*
+ * .scrollbar-sidebar
+ * Thin (4 px), hover-reveal scrollbar for the sidebar conversation list.
+ * Thumb is invisible at rest; fades in when the list is hovered.
+ */
+.scrollbar-sidebar {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.scrollbar-sidebar:hover {
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+/* Webkit (Chrome / Edge / Safari) */
+.scrollbar-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-sidebar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 100px;
+}
+.scrollbar-sidebar:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+}
+.scrollbar-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover) !important;
+}
+
+/*
+ * .scrollbar-chat
+ * `scrollbar-gutter: stable` permanently reserves the gutter so the browser
+ * never reallocates layout space when the thumb colour changes on hover.
+ * Thumb is transparent at rest, fades in on hover — no layout shift.
+ */
+.scrollbar-chat {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* ── Sonner toast tweaks ──────────────────────────────────────────────────── */
+/* Move the close button to the top-right corner */
+[data-sonner-toast] [data-close-button] {
+  left: auto !important;
+  right: -6px !important;
+  top: -1px !important;
+}
+
+.scrollbar-chat:hover {
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+/* Webkit (Chrome / Edge / Safari) */
+.scrollbar-chat::-webkit-scrollbar {
+  width: 5px;
+}
+.scrollbar-chat::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-chat::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 100px;
+  transition: background-color 0.15s ease;
+}
+.scrollbar-chat:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+}
+.scrollbar-chat::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover) !important;
+}

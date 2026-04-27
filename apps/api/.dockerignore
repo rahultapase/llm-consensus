@@ -1,0 +1,13 @@
+.env
+.env.*
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+tests/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+Dockerfile*
+*.log

@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+.venv/
+
+# Python
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+wheels/
+*.egg-info
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Keys and secrets
+*.pem
+
+# Data files (legacy, removed in Phase 5)
+data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Turbopack
+.turbo/
+
+# Md files
+AGENTS.md
+issues.md
+features.md
+decisions.md
+api.md
+deployment.md
+progress.md
+schema.md
+.pyton-version
+docs/
+Plan.md
+.agents
+
+# Vercel
+.vercel/

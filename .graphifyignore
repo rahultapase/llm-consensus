@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+.turbo/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.uv/
+
+# Package locks
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+uv.lock
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Git
+.git/
+.gitignore
+
+# Cache
+.cache/
+*.cache
+graphify-out/
+.graphify/
+
+# Test artifacts
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated / auto-built
+apps/web/next-env.d.ts
+apps/web/postcss.config.mjs
+
+# Large decorative assets only (keep diagrams/mockups/wireframes)
+*.ico
+*.woff
+*.woff2
+*.ttf
+
+# Migration SQL
+supabase/migrations/
+
+# Test scaffolding
+**/*.test.ts
+**/*.spec.ts
+**/*.test.tsx
+**/*.spec.tsx
+e2e/
+tests/
+.agents/skills/webapp-testing/
+playwright-report/
+test-results/
