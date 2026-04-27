@@ -192,13 +192,15 @@ export function ChatInterface({ conversationId, pendingMessage }: ChatInterfaceP
         <MessageList messages={mergedMessages} className="flex-1 min-h-0" />
       )}
 
-      <MessageInput
-        ref={inputRef}
-        onSend={handleSend}
-        onAbort={abort}
-        isStreaming={isStreaming}
-        disabled={!conversationId}
-      />
+      <div className="mt-auto">
+        <MessageInput
+          ref={inputRef}
+          onSend={handleSend}
+          onAbort={abort}
+          isStreaming={isStreaming}
+          disabled={!conversationId}
+        />
+      </div>
     </div>
   );
 }
