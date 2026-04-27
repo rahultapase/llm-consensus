@@ -45,8 +45,8 @@ export default function AuthLayout({
           }}
         >
           {/* Mobile: compact bar */}
-          <div className="flex items-center gap-3 px-6 py-4 lg:hidden">
-            <Logo size={20} withWordmark href="/" />
+          <div className="flex items-center gap-3 px-6 py-5 lg:hidden">
+            <Logo size={30} withWordmark href="/" />
           </div>
 
           {/* Desktop: full panel */}

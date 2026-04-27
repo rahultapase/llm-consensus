@@ -6,9 +6,13 @@ function readPersistedState(): boolean {
   if (typeof window === "undefined") return true;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === null ? true : raw === "true";
+    if (raw === null) {
+      // Default: closed on mobile, open on desktop
+      return window.innerWidth >= 768;
+    }
+    return raw === "true";
   } catch {
-    return true;
+    return window.innerWidth >= 768;
   }
 }
 

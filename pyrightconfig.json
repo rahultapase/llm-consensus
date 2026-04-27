@@ -1,0 +1,16 @@
+{
+  "venvPath": "apps/api",
+  "venv": ".venv",
+  "include": [
+    "apps/api/backend",
+    "apps/api/tests"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "apps/api",
+      "extraPaths": [
+        "apps/api"
+      ]
+    }
+  ]
+}

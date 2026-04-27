@@ -67,12 +67,12 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
 
   return (
     <div className="flex flex-1 flex-col justify-center">
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 px-4 sm:gap-6">
         {/* Heading */}
         {isTemporary ? (
           <div>
             <h1
-              className="flex items-center gap-3 text-2xl font-bold"
+              className="flex items-center gap-3 text-xl font-bold sm:text-2xl"
               style={{ color: "var(--color-text-primary)" }}
             >
               <Eye className="size-6" />
@@ -88,7 +88,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
         ) : (
           <div className="flex flex-col gap-1.5">
             <h1
-              className="text-2xl font-bold"
+              className="text-xl font-bold sm:text-2xl"
               style={{ color: "var(--color-text-primary)" }}
             >
               {username
@@ -144,7 +144,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
             <button
               key={suggestion}
               onClick={() => onSuggestionClick(suggestion)}
-              className="flex w-full items-center justify-between px-4 py-3.5 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-ring"
+              className="flex w-full items-center justify-between px-4 py-2.5 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-1 focus-visible:ring-ring sm:py-3.5"
               style={{
                 color: "var(--color-text-primary)",
                 background: "transparent",

@@ -1,6 +1,8 @@
 """Supabase JWT verification via JWKS endpoint."""
 
 
+from typing import cast
+
 import httpx
 from fastapi import HTTPException, Request
 from jose import JWTError, jwt
@@ -19,7 +21,7 @@ async def _fetch_jwks() -> dict:
     async with httpx.AsyncClient(timeout=10.0) as client:
         resp = await client.get(settings.supabase_jwks_url)
         resp.raise_for_status()
-        _jwks_cache = resp.json()
+        _jwks_cache = cast(dict, resp.json())
         return _jwks_cache
 
 
