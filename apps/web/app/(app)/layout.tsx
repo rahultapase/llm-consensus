@@ -26,7 +26,7 @@ export default async function AppLayout({
     <TRPCReactProvider>
       <UserLoader />
       <LoginToast />
-      <div className="h-screen overflow-hidden" style={{ background: "var(--color-bg)" }}>
+      <div className="h-dvh overflow-hidden" style={{ background: "var(--color-bg)" }}>
         <Sidebar />
         <TopControls />
         <MainContent>
