@@ -192,7 +192,7 @@ export function ChatInterface({ conversationId, pendingMessage }: ChatInterfaceP
         <MessageList messages={mergedMessages} className="flex-1 min-h-0" />
       )}
 
-      <div className="mt-auto">
+      <div>
         <MessageInput
           ref={inputRef}
           onSend={handleSend}

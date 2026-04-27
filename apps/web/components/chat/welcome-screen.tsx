@@ -66,7 +66,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
     : DEFAULT_SUGGESTIONS;
 
   return (
-    <div className="flex flex-col pt-6 sm:flex-1 sm:justify-center sm:pt-0">
+    <div className="flex flex-1 flex-col pt-6 sm:justify-center sm:pt-0">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 px-4 sm:gap-6">
         {/* Heading */}
         {isTemporary ? (
