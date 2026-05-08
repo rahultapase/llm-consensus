@@ -32,11 +32,11 @@ export function Logo({
 }: LogoProps) {
   const theme = usePreferencesStore((s) => s.theme);
   const isDark = theme === "dark";
+  const imageAlt = withWordmark ? "" : "LLM Consensus";
 
   return (
     <Link
       href={href}
-      aria-label="LLM Consensus — go to home"
       className={cn(
         "group inline-flex items-center gap-2 select-none rounded-md",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent)/60",
@@ -52,7 +52,7 @@ export function Logo({
           src="/brain_black.svg"
           width={size}
           height={size}
-          alt="LLM Consensus"
+          alt={imageAlt}
           className="relative z-10 block transition-all duration-200 ease-out group-hover:scale-105 group-active:scale-95"
           style={{ filter: isDark ? "invert(1)" : "none" }}
         />

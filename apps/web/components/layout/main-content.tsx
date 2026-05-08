@@ -20,11 +20,12 @@ export function MainContent({ children }: { children: React.ReactNode }) {
   const ml = isMobile ? 0 : isOpen ? SIDEBAR_WIDTH : RAIL_WIDTH;
 
   return (
-    <div
+    <main
+      id="main-content"
       className="flex h-full min-h-0 flex-1 flex-col overflow-hidden transition-[margin-left] duration-200 ease-out"
       style={{ marginLeft: ml }}
     >
       {children}
-    </div>
+    </main>
   );
 }

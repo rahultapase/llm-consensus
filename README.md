@@ -3,8 +3,9 @@
   <source media="(prefers-color-scheme: light)" srcset="apps/web/public/favicon.svg">
   <img src="apps/web/public/favicon.svg" width="40" alt="LLM Consensus logo" align="left">
 </picture>
-  <h1>&nbsp; LLM Consensus — Multi-Model Consensus Framework</h1>
-  <p>Get a smarter answer by letting your LLMs debate it first.</p>
+  <h1>   LLM Consensus - Multi-Model Consensus Framework</h1>
+  
+<blockquote>Get a smarter answer by letting your LLMs debate it first.</blockquote>
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-4CAF50?style=for-the-badge&logo=vercel&logoColor=white)](https://llm-consensus-taupe.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)

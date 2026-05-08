@@ -128,57 +128,65 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(fu
               {modes.map(({ key, label, icon: Icon }) => {
                 const isSelected = councilMode === key;
                 return (
-                  <Tooltip key={key} label={`Switch to ${label} mode`} side="bottom" disabled={isSelected}>
-                    <button
-                      onClick={() => setCouncilMode(key)}
-                      className={cn(
-                        "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium",
-                        "transition-all duration-150",
-                        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                      )}
-                      style={{
-                        background: isSelected
-                          ? "var(--color-btn-primary-bg)"
-                          : "transparent",
-                        color: isSelected
-                          ? "var(--color-btn-primary-fg)"
-                          : "var(--color-text-secondary)",
-                        border: isSelected
-                          ? "1px solid var(--color-btn-primary-bg)"
-                          : "1px solid var(--color-border)",
-                      }}
-                      aria-pressed={isSelected}
+                  <div
+                    key={key}
+                    className="flex items-center gap-0.5 rounded-full border px-0.5 py-0.5 transition-all duration-150"
+                    style={{
+                      background: isSelected
+                        ? "var(--color-btn-primary-bg)"
+                        : "transparent",
+                      borderColor: isSelected
+                        ? "var(--color-btn-primary-bg)"
+                        : "var(--color-border)",
+                    }}
+                  >
+                    <Tooltip label={`Switch to ${label} mode`} side="bottom" disabled={isSelected}>
+                      <button
+                        type="button"
+                        onClick={() => setCouncilMode(key)}
+                        className={cn(
+                          "flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium",
+                          "transition-all duration-150",
+                          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                        )}
+                        style={{
+                          color: isSelected
+                            ? "var(--color-btn-primary-fg)"
+                            : "var(--color-text-secondary)",
+                        }}
+                        aria-label={`Switch to ${label} mode`}
+                        aria-pressed={isSelected}
+                      >
+                        <Icon className="size-3" />
+                        <span>{label}</span>
+                      </button>
+                    </Tooltip>
+
+                    <Tooltip
+                      label={`Configure ${label} models`}
+                      shortcut={SHORTCUT_LABELS.switchModel}
+                      side="bottom"
+                      disabled={!isSelected}
                     >
-                      <Icon className="size-3" />
-                      <span>{label}</span>
-                      <span
-                        role="button"
-                        tabIndex={0}
+                      <button
+                        type="button"
+                        onClick={() => setConfigMode(key)}
                         aria-label={`Configure ${label} models`}
                         className={cn(
-                          "flex items-center justify-center rounded-full p-0.5 transition-opacity duration-150",
-                          isSelected ? "opacity-60 hover:opacity-100" : "opacity-40 hover:opacity-80"
+                          "flex size-7 items-center justify-center rounded-full transition-opacity duration-150",
+                          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                          isSelected ? "opacity-70 hover:opacity-100" : "opacity-55 hover:opacity-85"
                         )}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setConfigMode(key);
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            setConfigMode(key);
-                          }
+                        style={{
+                          color: isSelected
+                            ? "var(--color-btn-primary-fg)"
+                            : "var(--color-text-secondary)",
                         }}
                       >
-                        <Tooltip label={`Configure ${label} models`} shortcut={SHORTCUT_LABELS.switchModel} side="bottom" disabled={!isSelected}>
-                          <span className="flex items-center justify-center">
-                            <Settings className="size-3" />
-                          </span>
-                        </Tooltip>
-                      </span>
-                    </button>
-                  </Tooltip>
+                        <Settings className="size-3" />
+                      </button>
+                    </Tooltip>
+                  </div>
                 );
               })}
             </div>
@@ -187,8 +195,8 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(fu
               {/* Shift+Enter hint — visible when focused with no text */}
               {isFocused && !value && (
                 <span
-                  className="hidden select-none text-[10px] sm:block"
-                  style={{ color: "var(--color-text-secondary)", opacity: 0.55 }}
+                  className="hidden select-none text-[11px] sm:block"
+                  style={{ color: "var(--color-text-secondary)" }}
                 >
                   ⇧↵ new line
                 </span>
@@ -248,7 +256,7 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(fu
 
         <p
           className="mt-1.5 hidden text-center text-[11px] sm:block"
-          style={{ color: "var(--color-text-secondary)", opacity: 0.65 }}
+          style={{ color: "var(--color-text-secondary)" }}
         >
           LLM Consensus is AI and can make mistakes.{" "}
           <span className="cursor-default">

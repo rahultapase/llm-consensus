@@ -185,6 +185,7 @@ export function ConversationItem({ id, title, isStarred, updatedAt }: Conversati
         />
       ) : (
         <span
+          title={title}
           className="truncate text-sm font-medium leading-snug pr-6"
           style={{ color: "var(--color-text-primary)" }}
         >
