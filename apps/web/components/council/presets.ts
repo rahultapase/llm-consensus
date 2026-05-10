@@ -60,35 +60,3 @@ export const PRESETS: Record<Preset, PresetConfig> = {
     chairmanModel: "x-ai/grok-4.1-fast",
   },
 };
-
-export const ALL_MODELS: string[] = [
-  // OpenAI
-  "openai/gpt-5.4-nano",
-  "openai/gpt-4.1-mini",
-  "openai/gpt-4o-mini",
-  // Google
-  "google/gemini-3.1-flash-lite-preview",
-  "google/gemini-2.5-flash-lite",
-  // xAI
-  "x-ai/grok-4.1-fast",
-  // Mistral
-  "mistralai/mistral-small-2603",
-  // DeepSeek
-  "deepseek/deepseek-chat",
-  "deepseek/deepseek-v3.2",
-  // Qwen
-  "qwen/qwen-turbo",
-  "qwen/qwen3.5-plus-02-15",
-  // Moonshot
-  "moonshotai/kimi-k2.5",
-  "moonshotai/kimi-k2-thinking",
-  // Others
-  "z-ai/glm-4.7-flash",
-  "minimax/minimax-m2.7",
-  "minimax/minimax-m1",
-  "bytedance-seed/seed-1.6-flash",
-  "xiaomi/mimo-v2-flash",
-  // Anthropic
-  "anthropic/claude-sonnet-4-5",
-  "anthropic/claude-3-5-haiku",
-];

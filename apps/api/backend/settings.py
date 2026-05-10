@@ -34,4 +34,4 @@ class Settings(BaseSettings):
 
 
 # Crash on import if env vars missing — no silent fallbacks.
-settings = Settings()
+settings = Settings()  # pyright: ignore[reportCallIssue]

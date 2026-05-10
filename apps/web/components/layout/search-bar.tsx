@@ -30,11 +30,13 @@ export function SearchBar({ value, onChange, className }: SearchBarProps) {
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search your chats…"
         className={cn(
-          "w-full bg-transparent py-[7px] pl-9 pr-7 text-sm",
+          "w-full bg-transparent pl-9 pr-7 text-sm",
           "focus:outline-none"
         )}
         style={{
           color: "var(--color-text-primary)",
+          paddingTop: "7px",
+          paddingBottom: "7px",
         }}
       />
       {value && (

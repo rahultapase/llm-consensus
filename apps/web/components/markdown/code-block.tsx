@@ -67,11 +67,11 @@ export function CodeBlock({ code, lang }: CodeBlockProps) {
         <div
           className={cn(
             "overflow-x-auto p-4 text-sm",
-            "[&_.shiki]:bg-transparent [&_pre]:!bg-transparent",
+            "[&_.shiki]:bg-transparent [&_pre]:bg-transparent!",
             // Shiki dual-theme: light/dark via CSS vars
-            "[&_span[style*='--shiki-light']]:text-[var(--shiki-light)]",
-            "dark:[&_span[style*='--shiki-dark']]:text-[var(--shiki-dark)]",
-            "[&_pre]:!p-0 [&_code]:!text-xs [&_code]:leading-relaxed"
+            "[&_span[style*='--shiki-light']]:text-(--shiki-light)",
+            "dark:[&_span[style*='--shiki-dark']]:text-(--shiki-dark)",
+            "[&_pre]:p-0! [&_code]:text-xs! [&_code]:leading-relaxed"
           )}
           dangerouslySetInnerHTML={{ __html: html }}
         />

@@ -149,9 +149,12 @@ def parse_ranking_from_text(ranking_text: str) -> List[str]:
         parts = ranking_text.split("FINAL RANKING:")
         if len(parts) >= 2:
             ranking_section = parts[1]
-            numbered_matches = re.findall(r"\d+\.\s*Response [A-Z]", ranking_section)
+            numbered_matches = re.findall(
+                r"\d+\.\s*(Response [A-Z])",
+                ranking_section,
+            )
             if numbered_matches:
-                return [re.search(r"Response [A-Z]", m).group() for m in numbered_matches]
+                return numbered_matches
 
             matches = re.findall(r"Response [A-Z]", ranking_section)
             return matches
