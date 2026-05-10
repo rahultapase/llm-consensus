@@ -1,11 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useKeyboardShortcuts } from "@/lib/hooks/use-keyboard-shortcuts";
-import { CommandPalette } from "@/components/command-palette/command-palette";
-import { ShortcutsHelpModal } from "@/components/shortcuts/shortcuts-help-modal";
-import { ModeConfigDialog } from "@/components/council/mode-config-dialog";
 import {
   Dialog,
   DialogContent,
@@ -19,6 +17,18 @@ import { useChatStore } from "@/lib/stores/chat";
 import { useUIStore } from "@/lib/stores/ui";
 import { useTRPC } from "@/trpc/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+const CommandPalette = dynamic(
+  () => import("@/components/command-palette/command-palette").then((mod) => mod.CommandPalette)
+);
+
+const ShortcutsHelpModal = dynamic(
+  () => import("@/components/shortcuts/shortcuts-help-modal").then((mod) => mod.ShortcutsHelpModal)
+);
+
+const ModeConfigDialog = dynamic(
+  () => import("@/components/council/mode-config-dialog").then((mod) => mod.ModeConfigDialog)
+);
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -215,19 +225,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <>
       {children}
 
-      <CommandPalette
-        open={commandPaletteOpen}
-        onOpenChange={setCommandPaletteOpen}
-      />
+      {commandPaletteOpen ? (
+        <CommandPalette
+          open={commandPaletteOpen}
+          onOpenChange={setCommandPaletteOpen}
+        />
+      ) : null}
 
-      <ShortcutsHelpModal />
+      {shortcutsHelpOpen ? <ShortcutsHelpModal /> : null}
 
       {/* Global model picker — triggered by Ctrl+/ */}
-      <ModeConfigDialog
-        open={modelPickerOpen}
-        onOpenChange={setModelPickerOpen}
-        mode={councilMode}
-      />
+      {modelPickerOpen ? (
+        <ModeConfigDialog
+          open={modelPickerOpen}
+          onOpenChange={setModelPickerOpen}
+          mode={councilMode}
+        />
+      ) : null}
 
       {/* Delete-chat confirmation — triggered by Ctrl+Shift+Backspace */}
       <Dialog

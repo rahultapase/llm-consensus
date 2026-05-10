@@ -1,13 +1,21 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { ArrowUp, Square, Settings, Zap, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { VoiceInput } from "./voice-input";
 import { useChatStore } from "@/lib/stores/chat";
-import { ModeConfigDialog } from "@/components/council/mode-config-dialog";
 import { Tooltip } from "@/components/ui/tooltip";
 import { SHORTCUT_LABELS } from "@/lib/shortcut-labels";
+
+const VoiceInput = dynamic(
+  () => import("./voice-input").then((mod) => mod.VoiceInput),
+  { ssr: false, loading: () => null }
+);
+
+const ModeConfigDialog = dynamic(
+  () => import("@/components/council/mode-config-dialog").then((mod) => mod.ModeConfigDialog)
+);
 
 export interface MessageInputHandle {
   setValue: (value: string) => void;
