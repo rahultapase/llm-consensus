@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: llm-consensus-api
+    runtime: docker
+    rootDir: apps/api
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_API_URL
+        value: https://openrouter.ai/api/v1/chat/completions
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_JWKS_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: APP_VERSION
+        value: 0.2.0

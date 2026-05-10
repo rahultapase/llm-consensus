@@ -57,7 +57,7 @@ Try it at **[llm-consensus-taupe.vercel.app](https://llm-consensus-taupe.vercel.
 | Backend | FastAPI · httpx · OpenRouter |
 | Rate Limiting | Upstash Redis (`@upstash/ratelimit`) |
 | Rendering | react-markdown · rehype-shiki · rehype-katex · Mermaid |
-| Deploy | Vercel (web) · Railway (API) |
+| Deploy | Vercel (web) · Render (API) |
 
 ## 📋 Prerequisites
 
@@ -137,16 +137,16 @@ Any [OpenRouter model ID](https://openrouter.ai/models) is supported.
 The monorepo deploys to two platforms from a single Git repository:
 
 - **Vercel** — Next.js app from `apps/web`. Set *Root Directory* to `apps/web` in the Vercel project settings.
-- **Railway** — FastAPI from `apps/api` via Dockerfile. Configuration is in `apps/api/railway.toml`.
+- **Render** — FastAPI from `apps/api` via Dockerfile. Configuration is in `render.yaml`.
 
-After deploying the API, update `FASTAPI_INTERNAL_URL` in Vercel to the Railway public URL, and add your Vercel deployment URL to `CORS_ORIGINS` in Railway.
+After deploying the API, update `FASTAPI_INTERNAL_URL` in Vercel to the Render public URL, and add your Vercel deployment URL to `CORS_ORIGINS` in Render.
 
 ## 📁 Project Structure
 
 ```
 llm-consensus/
 ├── apps/
-│   ├── api/                        # FastAPI backend (Railway)
+│   ├── api/                        # FastAPI backend (Render)
 │   │   └── backend/
 │   │       ├── main.py             # FastAPI app + SSE endpoint
 │   │       ├── council.py          # 3-stage orchestration logic

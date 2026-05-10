@@ -1,3 +1,7 @@
+# Deprecated: Render is now the active backend deployment target.
+# Keep this file only as a temporary rollback reference during migration.
+# Use /render.yaml and /render.md for the current deployment path.
+
 [build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
