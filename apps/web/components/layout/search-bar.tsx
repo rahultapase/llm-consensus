@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +11,8 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ value, onChange, className }: SearchBarProps) {
+  const inputId = useId();
+
   return (
     <div
       className={cn("relative flex items-center rounded-lg transition-all duration-150", className)}
@@ -20,6 +23,8 @@ export function SearchBar({ value, onChange, className }: SearchBarProps) {
         style={{ color: "var(--color-text-secondary)", opacity: 0.45 }}
       />
       <input
+        id={inputId}
+        name="conversation-search"
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}

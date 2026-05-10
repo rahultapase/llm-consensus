@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react";
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle, useId } from "react";
 import { ArrowUp, Square, Settings, Zap, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useChatStore } from "@/lib/stores/chat";
@@ -38,6 +38,7 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(fu
 }: MessageInputProps, ref) {
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const textareaId = useId();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { councilMode, setCouncilMode } = useChatStore();
 
@@ -100,6 +101,8 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(fu
           }}
         >
           <textarea
+            id={textareaId}
+            name="message"
             ref={textareaRef}
             value={value}
             onChange={(e) => setValue(e.target.value)}
