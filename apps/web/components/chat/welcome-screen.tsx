@@ -49,11 +49,12 @@ const SUGGESTIONS: Record<Category, string[]> = {
 };
 
 interface WelcomeScreenProps {
+  initialUsername?: string | null;
   onSuggestionClick: (text: string) => void;
 }
 
-export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
-  const username = useUsername();
+export function WelcomeScreen({ initialUsername = null, onSuggestionClick }: WelcomeScreenProps) {
+  const username = useUsername() ?? initialUsername;
   const { isTemporary } = useChatStore();
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
 
